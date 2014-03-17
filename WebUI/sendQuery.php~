@@ -1,0 +1,9 @@
+<?php
+	error_reporting(-1);
+	$query = $_REQUEST["searchBar"];
+	$cmd = 'sh runJob.sh ' . "'$query'";
+	$cmd = "rm -f ResultXML && ".$cmd;
+	$results = passthru($cmd, $pr);
+	//echo $cmd;
+	//echo file_get_contents ('ResultXML') . $pr;
+?>

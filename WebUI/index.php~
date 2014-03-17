@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script language="javascript" type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
+    <link type="text/css" href="css/main.css" rel="stylesheet">
+    <title>WikiQuery</title>
+  </head>
+
+  <body>
+      <script language="javascript" type="text/javascript">
+        $(document).ready(function(){
+          $("#searchButton").click(function(){
+	    var formData = $("#searchForm").serialize();
+	    console.log(formData);
+	    $.ajax({
+	        url: "sendQuery.php",
+	        data: formData,
+			datatype: "html",
+			type: "GET",
+			success: function(data){
+		    	$("#results").empty();
+		    	$("#results").append(data);
+			}
+	    });
+	  	});
+        });
+      </script>
+	<div id="container">
+      	<div id="searchSec">
+      		<form id=searchForm>
+           		<table>
+           			<tr>
+           				<td align="center"><input type="text" id="searchBar" name="searchBar"></td>
+           				<td align="center"><button type="button" id="searchButton">Search</button></td>
+        			</tr>
+        		</table>
+        	</form>
+      	</div>
+      	<div id="results">
+      	</div>
+	</div> 
+  </body>
+</html>
